@@ -1,0 +1,33 @@
+*start
+#initgametitle(变量操作)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+
+*newgame
+
+${
+;首先我们在RFZ脚本里对变量赋值
+#value[1]=100
+;如果变量1为100则跳转到*img1
+;#ifgoto(#value[1]==100,*img1)
+;简易写法
+#ifgoto(#[1]==100,*img1)
+$}
+
+*img1
+
+*luabegin
+local value1=RFZGetValue(1);--将RFZ变量1赋值给我们的LUA变量
+--下面我们判断一下是否是和我们刚才所赋值的值一样
+if value1==100 then
+local img = LoadImage("0.jpg",RFZLUA.IMG_8888);--加载图片
+while 1 do
+BeginScene(1);--开始绘图
+DrawImage(img,0,0);--画图
+EndScene();--结束绘图
+end
+FreeImage(img);--释放img内存
+end
+*luaend
+
+*end

@@ -1,0 +1,36 @@
+*start
+#initgametitle(时间器)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+
+*newgame
+
+*luabegin
+local img1 = LoadImage("0.jpg",RFZLUA.IMG_8888);--加载图片1
+local img2 = LoadImage("1.jpg",RFZLUA.IMG_8888);--加载图片2
+
+local timer= CreateTimer();--创建时间器
+StartTimer(timer);--开启时间器
+local lastimetick=GetTimerTick(timer);--获取时间
+
+while 1 do
+BeginScene(1);--开始绘图
+if (GetTimerTick(timer)-lastimetick)<=1000 then--时间差小于1000毫秒就画图1
+DrawImage(img1,0,0);--画图1
+elseif (GetTimerTick(timer)-lastimetick)<=2000 then--时间差大于1000毫秒且小于2000毫秒就画图2
+DrawImage(img2,0,0);--画图2
+else
+lastimetick=GetTimerTick(timer);--重置时间
+end
+EndScene();--结束绘图
+end
+FreeImage(img1);--释放img1内存
+FreeImage(img2);--释放img2内存
+FreeTimer(timer);--释放时间器
+*luaend
+
+*luabegin
+*luaend
+
+*pause
+*end

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PSP打包ISO</title>
+<style type="text/css">
+<!--
+.STYLE2 {
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+-->
+</style>
+</head>
+
+<body>
+<p class="STYLE2">1.在RFZ引擎里打包必须遵守RFZ的打包规则,不是打包是不会成功或者不理想的.</p>
+<p class="STYLE2">2.首先我们打开 rfz_game_info.ini 文件找到</p>
+<p class="STYLE2">SAVEDATA 和 ISO 2个键[如果没有就自己手动加进去.]</p>
+<p class="STYLE2"><img src="-1.JPG" width="417" height="89" /></p>
+<p class="STYLE2">3.根据需要自己更改 存档名 和 将 ISO模式开启</p>
+<p class="STYLE2">SAVADATA=你的存档名 [注:不要单纯的扔个SAVE.RFZ就完事了.]</p>
+<p class="STYLE2">ISO=值[</p>
+<p class="STYLE2">0:关闭ISO模式[此时存档文件是当前路径下生成的.]</p>
+<p class="STYLE2">1:开启ISO模式[此时存档文件是:&quot;ms0:\ReinforceZwei\SAVEDATA&quot;路径下生成的.]</p>
+<p class="STYLE2">]</p>
+<p class="STYLE2"><img src="-2.JPG" width="414" height="96" /></p>
+<p class="STYLE2">4.由于开启ISO模式后 #initbgmdir函数是无效的,所以你必须把你的</p>
+<p class="STYLE2">背景音乐放在于 引擎同一目录下.</p>
+<p class="STYLE2">如图:</p>
+<p class="STYLE2"><img src="-3.JPG" width="618" height="216" /></p>
+<p class="STYLE2">5.注意点:</p>
+<p class="STYLE2">1.ISO模式下存档都将保存在:&quot;ms0:\ReinforceZwei\SAVEDATA&quot;路径下</p>
+<p class="STYLE2">2.ISO模式下必须使用 文本索引模式 不然 文本历史回想 无效化.</p>
+<p class="STYLE2">3.ISO模式下#initbgmdir函数是无效的.</p>
+<p class="STYLE2">6.我们打开PSP打包工具</p>
+<p class="STYLE2"><img src="0.JPG" width="726" height="206" /></p>
+<p class="STYLE2">7.把同目录下的 PSP_GAME 拖入其中</p>
+<p class="STYLE2"><img src="1.JPG" width="657" height="193" /></p>
+<p class="STYLE2">8.路径转到 SYSDIR</p>
+<p class="STYLE2"><img src="2.JPG" width="749" height="231" /></p>
+<p class="STYLE2">9.将你的游戏资源全部拖入其中</p>
+<p class="STYLE2"><img src="3.JPG" width="713" height="437" /></p>
+<p class="STYLE2">10.打包ISO</p>
+<p class="STYLE2"><img src="4.JPG" width="674" height="498" /></p>
+<p class="STYLE2">&nbsp;</p>
+</body>
+</html>

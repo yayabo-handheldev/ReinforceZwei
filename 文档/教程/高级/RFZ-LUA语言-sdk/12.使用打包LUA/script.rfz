@@ -1,0 +1,13 @@
+*start
+#initgametitle(使用打包LUA)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+#initluapack(lua.rfz)
+
+*newgame
+
+*luabegin
+RFZLua("test.lua");
+*luaend
+
+*end

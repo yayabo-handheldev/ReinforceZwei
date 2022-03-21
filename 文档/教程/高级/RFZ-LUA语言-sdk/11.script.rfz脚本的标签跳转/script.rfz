@@ -1,0 +1,34 @@
+*start
+#initgametitle(script.rfz脚本的标签跳转)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+
+*newgame
+
+*luabegin
+local ch = 0;
+if ch==0 then
+RFZGoto("*test");--跳到标签 *test 处
+end
+*luaend
+
+${
+#luabegin()
+print("永远都到不了这里!");
+#luaend()
+$}
+
+*test
+${
+#luabegin()
+local img = LoadImage("0.jpg",RFZLUA.IMG_8888);--加载图片
+while 1 do
+BeginScene(1);--开始绘图
+DrawImage(img,0,0);--画图
+EndScene();--结束绘图
+end
+FreeImage(img);--释放img内存
+#luaend()
+$}
+
+*end

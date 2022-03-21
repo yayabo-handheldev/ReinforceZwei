@@ -1,0 +1,42 @@
+
+1.按键值定义
+
+RFZLUA.BTN_UP	        方向键 上(window对应 w)
+RFZLUA.BTN_DOWN	        方向键 下(window对应 s)	
+RFZLUA.BTN_LEFT	        方向键 左(window对应 a)	
+RFZLUA.BTN_RIGHT	    方向键 右(window对应 d)	
+RFZLUA.BTN_CIRCLE	    圈圈(window对应 l)	
+RFZLUA.BTN_SQUARE	    方块(window对应 j)	
+RFZLUA.BTN_TRIANGLE	    三角(window对应 i)	
+RFZLUA.BTN_CROSS	    叉叉(window对应 k)	
+RFZLUA.BTN_START	    开始(window对应 b)	
+RFZLUA.BTN_SELECT	    选择(window对应 v)	
+RFZLUA.BTN_HOME	        HOME键(window对应 n)	
+RFZLUA.BTN_HOLD         HOLD键(window对应 m)
+RFZLUA.BTN_LT	        L键(window对应 e)	
+RFZLUA.BTN_RT	        R键(window对应 u)
+
+
+2.鼠标按键定义
+RFZLUA.TYPE_DOWN	    按下
+RFZLUA.TYPE_UP	        释放	
+RFZLUA.TYPE_LDOWN	    鼠标左键按下
+RFZLUA.TYPE_LUP	        鼠标左键释放
+RFZLUA.TYPE_RDOWN	    鼠标右键按下	
+RFZLUA.TYPE_RUP	        鼠标右键释放
+RFZLUA.TYPE_MDOWN	    鼠标中间键按下	
+RFZLUA.TYPE_MUP	        鼠标中间键释放
+
+
+3.颜色类型定义
+RFZLUA.IMG_4444	        16位4444
+RFZLUA.IMG_565	        16位565
+RFZLUA.IMG_5551	        16位5551	
+RFZLUA.IMG_8888	        32位8888
+
+4.字体显示类型定义
+RFZLUA.FONT_NORMAL             正常方式
+RFZLUA.FONT_SHADOW             阴影方式
+
+
+

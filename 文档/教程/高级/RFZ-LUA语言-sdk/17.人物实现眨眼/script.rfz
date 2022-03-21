@@ -1,0 +1,61 @@
+*start
+#initgametitle(人物眨眼)
+#initpack(null,null,null,null,null,null)
+#initlua()
+
+*newgame
+*test
+*luabegin
+
+local se = LoadImage("fhako1_2_1_05.png",RFZLUA.IMG_8888);
+local timer=CreateTimer();
+StartTimer(timer);
+local timeticks=GetTimerTick(timer);
+
+local first_eye_index=1;
+local eye_fps=4;
+local eye_gap=500;--2次眨眼之间的间隔时间
+local eye_time=1000;
+local eye_chr_time=eye_time/eye_fps;
+
+local eye_fps_index=first_eye_index;
+local se_eye=RFZLoadImageIndex(eye_fps_index,RFZLUA.IMG_8888,"segifeyes.rfz");
+local start_eye=0;
+
+while 1 do
+if (GetTimerTick(timer)-timeticks)>=eye_gap and start_eye==0 then
+timeticks=GetTimerTick(timer);
+start_eye=1;
+
+eye_fps_index=first_eye_index+1;
+FreeImage(se_eye);
+se_eye=RFZLoadImageIndex(eye_fps_index,RFZLUA.IMG_8888,"segifeyes.rfz");
+
+elseif (GetTimerTick(timer)-timeticks)>=eye_chr_time and start_eye==1 then
+
+timeticks=GetTimerTick(timer);
+eye_fps_index=eye_fps_index+1;
+if eye_fps_index>eye_fps then
+eye_fps_index=first_eye_index;
+start_eye=0;
+end
+FreeImage(se_eye);
+se_eye=RFZLoadImageIndex(eye_fps_index,RFZLUA.IMG_8888,"segifeyes.rfz");
+
+end
+
+BeginScene(1);
+DrawImage(se,0,0);
+DrawImage(se_eye,54.8,48.5);
+EndScene();
+
+end
+
+FreeImage(se);
+FreeImage(se_eye);
+FreeTimer(timer);
+
+*luaend
+
+
+*end

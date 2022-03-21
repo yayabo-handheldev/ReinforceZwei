@@ -1,0 +1,6 @@
+
+在rfz_game_info.ini里填入以下2个参数
+
+LOADING_PACK:游戏loading动画rfz资源包
+LOADING_TIME:loading循环一次所需要的时间 [最大值=5000]注:1.第一次生成存档时 loading 时间是比较长的.
+2.rfz里图片最好不要超过7张,因为打包ISO由于某些情况可能死机.

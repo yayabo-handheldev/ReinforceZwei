@@ -1,0 +1,65 @@
+*start
+#initgametitle(效果器)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+;包含按键响应函数
+#initluainclude(inputproc.lua)
+
+*newgame
+
+*luabegin
+
+unpause=0;--用于表示是否重新播放音频
+angel=0;--用于图片旋转
+
+local img = RFZLoadImage("0.jpg",RFZLUA.IMG_8888,"bg.rfz");--加载图片
+local img_des = LoadImage("14.png",RFZLUA.IMG_8888);--加载遮片
+
+local snd = LoadSound("0.mp3");--加载音频
+--local snd = RFZLoadSoundIndex(1,"voice.rfz");--索引方式加载音频
+SetSoundVol(snd,128);--设置音量
+PlaySound(snd,1);--播放1次
+local text_bg = CreateImage(480,272,RFZLUA.IMG_8888);--创建个画字体的背景
+local font = LoadFontTTF("simfang.ttf",13,RFZLUA.IMG_8888);--加载ttf字体
+SetFontColor(font,MAKE_RGBA_8888(255,0,255,255));--改变字体颜色
+--DrawText(font,"方向键改变图像角度",text_bg,240,100,RFZLUA.FONT_NORMAL);
+DrawText(font,"L键重新播放音频",text_bg,240,120,RFZLUA.FONT_NORMAL);
+
+local effect_fadein = effect_create_fadein(0,255,3000);--创建淡入效果器
+local effect_change = effect_create_transitions(img_des,img,0,3000);--创建转场效果器
+
+InitUserInputProc();--初始化用户按键系统
+
+while 1 do
+BeginScene(1);--开始绘图
+if GetEffectStatus(effect_fadein)~=RFZLUA.EFFECT_STOP then
+DrawEffect(effect_fadein,img,0,0);--画效果器
+elseif GetEffectStatus(effect_change)~=RFZLUA.EFFECT_STOP then
+DrawEffect(effect_change,img_des,0,0);--画效果器
+else
+--DrawImageEx(img,0,0,0,0,0,0,1,1,angel,MAKE_RGBA_8888(255,255,255,255));--画图
+end
+
+DrawImage(text_bg,0,0);--画字体背景图
+if unpause==1 then
+unpause=0;
+--RewindSound(snd);
+FreeSound(snd);
+snd = LoadSound("0.mp3");--加载音频
+SetSoundVol(snd,128);--设置音量
+PlaySound(snd,1);--播放1次
+end
+EndScene();--结束绘图
+end
+
+FreeImage(img);--释放img内存
+FreeImage(img_des);--释放img_des内存
+FreeImage(text_bg);--释放text_bg内存
+FreeSound(snd);--释放音频
+FreeFont(font);--释放字体
+FreeEffect(effect_fadein);--释放效果器
+FreeEffect(effect_change);--释放效果器
+FiniUserInputProc();--释放用户按键系统
+*luaend
+*pause
+*end

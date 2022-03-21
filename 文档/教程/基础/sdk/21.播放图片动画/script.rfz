@@ -1,0 +1,20 @@
+*start
+#initgametitle(≤•∑≈Õº∆¨∂Øª≠)
+#initpack(null,null,null,null,null,null)
+
+*newgame
+*test
+
+${
+#loadingmovie(loading.rfz,1000);--loading Ω≤•∑≈Õº∆¨÷°
+$}
+
+${
+#easymovie(loading.rfz,100);--1¥Œ≤•∑≈Õº∆¨÷°
+$}
+
+${
+#easymovieex(loading.rfz,100,2);--2¥Œ≤•∑≈Õº∆¨÷°
+$}
+
+*end

@@ -1,0 +1,18 @@
+*start
+#initgametitle(GIF图片显示)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+
+*newgame
+
+*luabegin
+local gif = LoadGif("test.gif",RFZLUA.IMG_8888);--加载图片
+while 1 do
+BeginScene(1);--开始绘图
+DrawGif(gif,0,0);--画图
+EndScene();--结束绘图
+end
+FreeGif(gif);--释放gif内存
+*luaend
+
+*end

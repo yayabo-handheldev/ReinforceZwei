@@ -1,0 +1,9 @@
+在 rfz_game_info.ini 加入以下
+参数即可
+
+/*窗口宽*/
+WINDOW_WIDTH=480
+/*窗口高*/
+WINDOW_HEIGHT=272
+/*是否全屏*/
+FULL_SCREEN=0

@@ -1,0 +1,11 @@
+*start
+#initgametitle(GIFÕº∆¨œ‘ æ)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+#initluainclude(extendmode.lua)
+
+*newgame
+
+*pause
+
+*end

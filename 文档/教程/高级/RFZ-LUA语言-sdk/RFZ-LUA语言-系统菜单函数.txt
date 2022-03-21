@@ -1,0 +1,283 @@
+
+--常量
+RFZLUA.SAVEDATA_MAXDATA          最大存档数,值为100
+RFZLUA.SAVEDATA_NODATA           无存档
+RFZLUA.LOADDATA_ERROR            读档错误
+RFZLUA.LOADDATA_EXIT             读档后需要进行退出游戏的操作
+RFZLUA.LOADDATA_RESTART          读档后需要进行重置游戏的操作
+RFZLUA.CG_MAXDATA                最大CG数,值为1000
+RFZLUA.CG_NODATA                 无CG
+RFZLUA.CGMEMORY_MAXDATA          最大CG回想数,值为100
+RFZLUA.CGMEMORY_NODATA           无CG回想
+--
+--接口
+function RFZGameMenu_Init()--游戏菜单初始化接口
+end
+function RFZGameMenu_Free()--游戏菜单销毁资源接口
+end
+function RFZGameMenu()--游戏菜单绘图接口
+end
+
+--函数
+
+0.ReleaseScene
+/**
+*@param 没有参数
+*/
+/*
+0.释放绘图
+ReleaseScene()
+*/
+
+
+//rfz-系统函数-开始
+//存档/读档系统函数-开始
+
+1.RFZSysGetSaveDataCounts
+/*
+*@return 当前存档数
+*/
+/*
+1.获取当前存档数
+savedatacounts=RFZSysGetSaveDataCounts();
+*/
+
+2.RFZSysGetSavedataCurTime
+/*
+*@return 当前时间
+*/
+/*
+2.获取当前时间
+timer_info=RFZSysGetSavedataCurTime();
+*/
+
+3.RFZSysDeleteSavedata
+/*
+*@param  savedata_index:指定的存档索引,取值[1-RFZLUA.SAVEDATA_MAXDATA];
+*@return 无
+*/
+/*
+3.删除指定存档
+RFZSysDeleteSavedata(1);--将第一个存档删除
+*/
+
+4.RFZSysWriteSavedata
+/*
+*@param  time_info:当前时间
+*@param  savedata_index:指定的存档索引,取值[1-RFZLUA.SAVEDATA_MAXDATA];
+*@return 无
+*/
+/*
+4.指定位置存档
+RFZSysWriteSavedata(RFZSysGetSavedataCurTime(),1);--在第一个位置存档
+*/
+
+
+5.RFZSysWriteSavedataEx
+/*
+*@param  savedata_index:指定的存档索引,取值[1-RFZLUA.SAVEDATA_MAXDATA];
+*@return 无
+*/
+/*
+5.指定位置存档
+RFZSysWriteSavedataEx(1);--在第一个位置存档
+*/
+
+6.RFZSysReadSavedata
+/*
+*@param  savedata_index:指定的存档索引,取值[1-RFZLUA.SAVEDATA_MAXDATA];
+*@return 指定位置存档的存档时间
+*/
+/*
+6.获取指定位置存档的存档时间
+savatime_info=RFZSysReadSavedata(1);--获取第一个存档的存档时间
+*/
+
+7.RFZSysLoadSavedata
+/*
+*@param  savedata_index:指定的存档索引,取值[1-RFZLUA.SAVEDATA_MAXDATA];
+*@return 以下3个中的一个
+RFZLUA.LOADDATA_ERROR     --读档索引错误
+RFZLUA.LOADDATA_EXIT      --读档退出游戏消息
+RFZLUA.LOADDATA_RESTART   --读档返回标题消息
+*/
+/*
+7.读档游戏
+ierror=RFZSysLoadSavedata(1);--读档第一个存档
+*/
+
+//存档/读档系统函数-结束
+
+//CG模式系统函数-开始
+
+1.RFZSysGetCGCounts
+/*
+*@return 当前CG数
+*/
+/*
+1.获取当前CG数
+cg_counts=RFZSysGetCGCounts();
+*/
+
+2.RFZSysReadCG
+/*
+*@param  cg_index:指定的CG索引,取值[1-RFZLUA.CG_MAXDATA];
+*@return 当前CG在CG包中位置索引
+*/
+/*
+2.获取当前CG在CG包中位置索引
+hcg_index=RFZSysReadCG(1);--获取第一张CG在CG包中的位置
+*/
+
+3.RFZSysGetCGPack
+/*
+*@return 当前CG包名
+*/
+/*
+3.获取当前CG包名
+cgpack=RFZSysGetCGPack();
+*/
+
+4.RFZSysGetChildCGPack
+/*
+*@return 当前子CG包名
+*/
+/*
+4.获取当前子CG包名
+childcgpack=RFZSysGetChildCGPack();
+*/
+
+//CG模式系统函数-结束
+
+//CG回想模式系统函数-开始
+
+1.RFZSysGetCGMemoryCounts
+/*
+*@return 当前CG回想数
+*/
+/*
+1.获取当前CG回想数
+cgmemory_counts=RFZSysGetCGMemoryCounts();
+*/
+
+2.RFZSysGetChildCGMemoryPack
+/*
+*@return 当前子CG回想包名
+*/
+/*
+2.获取当前子CG回想包名
+childcgmemorypack=RFZSysGetChildCGMemoryPack();
+*/
+
+3.RFZSysReadCGMemory
+/*
+*@param  cgmemory_index:指定的CG回想索引,取值[1-RFZLUA.CGMEMORY_MAXDATA];
+*@return 当前CG回想缩略图在子CG回想包里的索引位置
+*/
+/*
+3.获取当前CG回想缩略图在子CG回想包里的索引位置
+hcgmemory_index=RFZSysReadCGMemory(1);--获取第一个CG回想的缩略图在子CG回想包里的索引位置
+*/
+
+4.RFZSysLoadCGMemory
+/*
+*@param  cgmemory_index:指定的CG回想索引,取值[1-RFZLUA.CGMEMORY_MAXDATA];
+*@return 无
+*/
+/*
+4.加载CG回想
+RFZSysLoadCGMemory(1);--开始第一个CG回想
+*/
+
+
+//CG回想模式系统函数-结束
+
+//游戏菜单函数-开始
+
+1.RFZSysGameMenuQuit
+/*
+*@return 无
+*/
+/*
+1.退出游戏菜单
+RFZSysGameMenuQuit();
+*/
+
+2.RFZSysGameMenuTitle
+/*
+*@return 无
+*/
+/*
+2.返回标题菜单
+RFZSysGameMenuTitle();
+*/
+
+3.RFZSysGameMenuExit
+/*
+*@return 无
+*/
+/*
+3.退出游戏
+RFZSysGameMenuExit();
+*/
+
+4.RFZSysGameMenuLoadSavedata
+/*
+*@param  savedata_index:指定的存档索引,取值[1-RFZLUA.SAVEDATA_MAXDATA];
+*@return 无
+*/
+/*
+4.读档游戏
+RFZSysGameMenuLoadSavedata(1);--读档第一个存档
+*/
+
+
+//游戏菜单函数-结束
+
+//历史回想系统函数-开始
+
+1.RFZSysLogGetLogText
+/*
+*@param  text_index:文本的索引值[取值:>0]
+*@return text，,text0,text1,text2
+*/
+/*
+1.获取历史对话文本
+text=RFZSysLogGetLogText(1);--获取第一个文本
+print(text.text0);
+*/
+
+
+2.RFZSysLogGetLogTextVoiceIndex
+/*
+*@param  text_index:文本的索引值[取值:>0]
+*@return 对话音频索引
+*@当发生错误时返回0.
+*/
+/*
+2.获取历史对话音频索引
+voice=RFZSysLogGetLogTextVoiceIndex(1);--获取第一个文本的音频对话索引
+*/
+
+3.RFZSysLogGetLogTextCounts
+/*
+*@return 对话文本数
+*/
+/*
+3.获取对话文本数
+text_counts=RFZSysLogGetLogTextCounts();
+*/
+
+/*
+*@param  text_index:文本的索引值[取值:>0]
+*@return 历史对话人物名
+*@当发生错误时返回 "" 
+*/
+/*
+4.获取历史对话人物名
+sename=RFZSysLogGetLogName(1);--获取第一个文本的对话人物名
+*/
+
+//历史回想系统函数-结束
+
+//rfz-系统函数-结束

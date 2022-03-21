@@ -1,0 +1,16 @@
+*start
+#initgametitle(使用多套按键系统)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+#initlua()
+
+*newgame
+
+*luabegin
+InitUserInputProc();--初始化按键系统
+RFZLua("按键系统1.lua");
+RFZLua("按键系统2.lua");
+RFZLua("按键系统3.lua");
+FiniUserInputProc();--结束按键系统
+*luaend
+*exit
+*end

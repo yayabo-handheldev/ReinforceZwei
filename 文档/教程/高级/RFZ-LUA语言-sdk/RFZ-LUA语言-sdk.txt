@@ -1,0 +1,1307 @@
+
+RFZ LUA 函数文档
+版本:V 2.0
+
+---->
+RFZ LUA系统默认按键系统函数名:
+MouseBtn(_type,x,y);--鼠标按键
+MouseMove(x,y);--鼠标移动
+BtnUp(key);--按键弹起
+BtnDown(key);--按键按下
+Analog(x,y);--摇杆--x,y取值范围:0-256--当摇杆处于正常状态时:x=128,y=128.
+<----
+
+
+0.按键处理函数
+//按键处理函数-开始
+0.1.InitUserInputProc()
+初始化用户按键系统
+0.2.FiniUserInputProc()
+0.3.SetUserInputProcIndex
+/**
+*@param sys_index,按键系统索引:取值范围:0--2^32-1
+*return 无.
+*/
+/*
+设置当前按键系统索引.
+InitUserInputProc();--初始化按键系统-默认按键系统索引为0
+SetUserInputProcIndex(1);--设置为按键系统1
+即以下函数有效:
+MouseBtn1(_type,x,y);--鼠标按键
+MouseMove1(x,y);--鼠标移动
+BtnUp1(key);--按键弹起
+BtnDown1(key);--按键按下
+Analog1(x,y);--摇杆
+*/
+
+结束用户按键系统
+//按键处理函数-结束
+
+1.图片处理函数
+1.1.LoadImage
+//图片处理函数-开始
+/**
+*@param name,文件名
+*@param type,类型，通常填IMG_8888或者0
+*@ret img,返回img供显示等用
+*/
+/*
+1.加载图片
+img = LoadImage(name,type);
+*/
+
+1.2.FreeImage
+/**
+*@param img,图片
+*/
+/*
+2 释放图片
+FreeImage(img);
+*/
+//图片处理函数-结束
+
+
+2.绘图函数
+//绘图函数-开始
+2.1.BeginScene
+/**
+*@param clear,是否清屏
+*/
+/*
+1.开始绘图，绘图开始时调用
+BeginScene(clear)
+*/
+
+2.2.EndScene
+/**
+*@param 没有参数
+*/
+/*
+2.结束绘图，绘图结束时调用
+EndScene()
+*/
+
+2.3.DrawImage
+/**
+*@param img，图片资源由LoadImage得到
+*@param x，屏幕x
+*@param y，屏幕y
+*/
+/*
+3.绘图函数，将图片img绘制于x，y处
+DrawImage(img,x,y);
+*/
+
+2.4.DrawImageEx
+/**
+*@param img，图片资源由LoadImage得到
+*@param sx，在img图上的x坐标
+*@param sy，在img图上的y坐标
+*@param sw，子图宽
+*@param sh，子图高
+*@param dx，屏幕x坐标
+*@param dy，屏幕y坐标
+*@param xscale，x放大倍率
+*@param yscale，y放大倍率
+*@param angel，绕中心的旋转角度
+*@param mask，可以设置的alpha值
+*/
+/*
+4.将图上的sx,sy,sw,sh的区域画到屏幕区域dx,dy,缩放，旋转，并且可以设置alpha值
+DrawImageEx(img,sx,sy,sw,sh,dx,dy,xscale,yscale,angel,mask);
+*/
+
+//绘图函数-结束
+
+3.几何函数
+
+//几何函数-开始
+3.1.DrawPoint
+/**
+*@param x，屏幕x
+*@param y，屏幕y
+*@param color，颜色类型是IMG_8888时，颜色0xffffffff为白色
+*@param type，颜色类型，默认IMG_8888，可以有4种
+*/
+/*
+1.画点函数
+DrawPoint(x,y,color,type)
+*/
+
+3.2.DrawLine
+/**
+*@param x1，屏幕x1
+*@param y1，屏幕y1
+*@param x2，屏幕x2
+*@param y2，屏幕y2  
+*@param color，颜色类型是IMG_8888时，颜色0xffffffff为白色
+*@param type，颜色类型，默认IMG_8888，可以有4种
+*/
+/*
+2.画线函数,2点画一条直线
+DrawLine(x1,y1,x2,y2,color,type)
+*/
+
+3.3.DrawRect
+/**
+*@param x，屏幕x1
+*@param y，屏幕y1
+*@param w，矩形宽
+*@param h，矩形高  
+*@param color，颜色类型是IMG_8888时，颜色0xffffffff为白色
+*@param type，颜色类型，默认IMG_8888，可以有4种
+*/
+/*
+3.画矩形线框
+DrawRect(x,y,w,h,color,type)
+*/
+
+3.4.FillRect
+/**
+*@param x，屏幕x1
+*@param y，屏幕y1
+*@param w，矩形宽
+*@param h，矩形高  
+*@param color，颜色类型是IMG_8888时，颜色0xffffffff为白色
+*@param type，颜色类型，默认IMG_8888，可以有4种
+*/
+/*
+4.填充矩形区域
+FillRect(x,y,w,h,color,type)
+*/
+
+3.5.DrawCircle
+/**
+*@param x，圆心x
+*@param y，圆心y
+*@param r，半径  
+*@param color，颜色类型是IMG_8888时，颜色0xffffffff为白色
+*@param type，颜色类型，默认IMG_8888，可以有4种
+*/
+/*
+5.画圆形线框
+DrawCircle(x,y,r,color,type);
+*/
+
+3.6.FillCircle
+/**
+*@param x，圆心x
+*@param y，圆心y
+*@param r，半径  
+*@param color，颜色类型是IMG_8888时，颜色0xffffffff为白色
+*@param type，颜色类型，默认IMG_8888，可以有4种
+*/
+/*
+6.画填充圆形
+FillCircle(x,y,r,color,type);
+*/
+
+//几何函数-结束
+
+4.音乐播放函数
+//音乐播放函数-开始
+4.1.LoadSound
+/**
+*@param  filename,文件名
+*@return  如成功返回snd音频,失败返回0
+*/
+/*
+1.加载一个声音文件,支持mp3 ogg wav
+snd=LoadSound(fliename);
+*/
+
+4.2.PlaySound
+/*
+*@param snd,声音
+*@param looptime,循环播放次数，0循环播放，looptime为几就播放几次
+*/
+/*
+2.播放声音
+PlaySound(snd,looptime);
+*/
+
+4.3.PauseSound
+/**
+*@param snd,声音
+*/
+/*
+3.暂停声音，用ResumeSound恢复，用IsPaused检查是否暂停
+PauseSound(snd);
+*/
+
+4.4.ResumeSound
+/**
+*@param snd,声音
+*/
+/*
+4.恢复一个暂停的声音
+ResumeSound(snd);
+*/
+
+4.5.FreeSound
+/**
+*@param snd,声音
+*/
+/*
+5.释放一个声音
+FreeSound(snd)
+*/
+
+4.6.SetSoundVol
+/**
+*@param snd,声音
+*@param vol,0-128
+*@return oldvol,原来的音量
+*/
+/*
+6.设置音量
+SetSoundVol(snd,vol);
+*/
+
+4.7.RewindSound
+/**
+*@param snd,声音
+*/
+/*
+7.回到声音开头
+RewindSound(snd);
+*/
+
+4.8.IsEOS
+/**
+*@param snd,声音
+*@return int,0-没有完毕，1完毕。（注：不是false/true,是0和1，在Lua中0不是false，所以要用IsEOS(snd)==0）
+*/
+/*
+8.是否到声音末尾（播放完毕）
+IsEOS(snd)
+*/
+
+4.9.IsPaused
+/**
+*@param snd,声音
+*@return int,0-没有完毕，1完毕。（注：不是false/true,是0和1，在Lua中0不是false，所以要用IsPause(snd)==0）
+*/
+/*
+9.是否暂停
+IsPaused(snd)
+*/
+//音乐播放函数-结束
+
+5.文字显示函数
+//文字显示函数-开始
+5.1.LoadFontTTF
+/**
+*@param ttf,ttf文件名
+*@param size,大小
+*@param type,类型
+*@return font,font供文字函数使用
+*/
+/*
+1.加载文字-ttf
+LoadFontTTF(ttf,size,type);
+*/
+
+5.2.LoadFontGBK
+/**
+*@param gbk,gbk文件名
+*@param asc,asc文件名
+*@param size,大小
+*@param type,类型
+*@return font,font供文字函数使用
+*/
+/*
+2.加载文字-点阵
+LoadFontGBK(gbk,asc,size,type);
+*/
+
+5.3.FreeFont
+/**
+*@param font,待释放的font
+*/
+/*
+3.释放文字
+FreeFont(font);
+*/
+
+5.4.DrawText
+/**
+*@param font,加载的文字
+*@param str,待显示字符
+*@param img,img
+*@param x,文字显示到img x坐标
+*@param y,文字显示到img y坐标
+*@param type,类型
+*/
+/*
+4.将文字显示到image
+DrawText(font,str,img,x,y,type);
+示例：
+img = CreateImage(480,272,RFZLUA.IMG_4444);
+font= LoadFont("simfang.ttf",13,RFZLUA.IMG_4444);
+DrawText(font,"测试",img,0,0,RFZLUA.FONT_NORMAL);
+*/
+
+5.5.SetFontColor
+/**
+*@param font,加载的文字
+*@param color,颜色值
+*/
+/*
+5.设置文字颜色
+SetFontColor(font,color)
+*/
+//文字显示函数-结束
+
+6.图像处理函数
+//图像处理函数-开始
+6.1.ImageInfo
+/**
+*@param img,img
+*@return imginfo，w,h,texw,texh,type,mask
+*/
+/*
+1.获取图像信息
+ImageInfo(img);
+示例：
+imginfo = ImageInfo(img);
+print(imginfo.w);
+*/
+
+6.2.ClearImage
+/**
+*@param img,img
+*/
+/*
+2.将一个图像清空成无色透明图
+ClearImage(img)
+*/
+
+6.3.CreateImage
+/**
+*@param w,宽
+*@param h,高
+*@param type,类型,例如RFZLUA.IMG_8888
+*@return img
+*/
+/*
+3.创建一个图像 --透明图
+CreateImage(w,h,type);
+*/
+
+6.4.CreateImageEx
+/**
+*@param w,宽
+*@param h,高
+*@param color,颜色
+*@param type,类型,例如RFZLUA.IMG_8888
+*@return img
+*/
+/*
+4.创建一个图像 --一般图
+CreateImageEx(w,h,color,type);
+*/
+
+6.5.CopyImage
+/**
+*@param srcimg,原图
+*@param desimg,目标图
+*@param x,拷贝到目标图x
+*@param y,拷贝到目标图y
+*/
+/*
+5.拷贝原图的某一块到目标图
+CopyImage(srcimg,desimg,x,y)
+*/
+
+6.6.CopyImageEx
+/**
+*@param srcimg,原图
+*@param desimg,目标图
+*@param sx,原图上的x
+*@param sy,原图上的y
+*@param sw,原图上的w
+*@param sh,原图上的h
+*@param x,拷贝到目标图x
+*@param y,拷贝到目标图y
+*/
+/*
+6.拷贝原图的某一块(sx,sy,sw,sh)到目标图
+CopyImageEx(srcimg,desimg,sx,sy,sw,sh,x,y)
+*/
+
+6.7.CloneImage
+/**
+*@param img,原图
+*@return imgclone,新的图
+*/
+/*
+7.clone一个一样的图片
+CloneImage(img)
+*/
+
+6.8.CreateColor
+/**
+*@param r,r
+*@param g,g
+*@param b,b
+*@param a,a
+*@param type,类型,例如RFZLUA.IMG_8888
+*@return color,颜色值
+*/
+/*
+8.创建一个颜色
+CreateColor(r,g,b,a,type)
+*/
+
+6.9.ImageFlipV
+/**
+*@param img,原图
+*@return 无
+*/
+/*
+9.垂直翻转图像
+ImageFlipV(img)
+*/
+
+7.0.ImageFlipH
+/**
+*@param img,原图
+*@return 无
+*/
+/*
+10.水平翻转图像
+ImageFlipH(img)
+*/
+
+7.1.创建颜色函数
+//创建颜色函数-开始
+7.2.MAKE_RGBA_4444
+创建一个IMG_4444颜色图片用的MASK色
+MAKE_RGBA_4444(r,g,b,a);
+等同于
+CreateColor(r,g,b,a,RFZLUA.IMG_4444);
+
+7.3.MAKE_RGBA_5551
+创建一个IMG_5551颜色图片用的MASK色
+MAKE_RGBA_5551(r,g,b,a);
+等同于
+CreateColor(r,g,b,a,RFZLUA.IMG_5551);
+
+7.4.MAKE_RGBA_565
+创建一个IMG_565颜色图片用的MASK色
+MAKE_RGBA_565(r,g,b,a);
+等同于
+CreateColor(r,g,b,a,RFZLUA.IMG_565);
+
+7.5.MAKE_RGBA_8888
+创建一个IMG_8888颜色图片用的MASK色
+MAKE_RGBA_8888(r,g,b,a);
+等同于
+CreateColor(r,g,b,a,RFZLUA.IMG_8888);
+//创建颜色函数-结束
+
+8.时间器函数
+//时间器函数-开始
+
+8.1.CreateTimer
+/*
+*/
+/*
+1.创建时间器
+timer=CreateTimer();
+*/
+
+8.2.FreeTimer
+/*
+*@param timer,时间器
+*@return 无
+*/
+/*
+2.释放时间器
+FreeTimer(timer);
+*/
+
+8.3.GetTimerTick
+/*
+*@param timer,时间器
+*@return timeticks
+*/
+/*
+3.获取time ticks
+timeticks=GetTimerTick(timer);
+*/
+
+8.4.StartTimer
+/*
+*@param timer,时间器
+*@return 无
+*/
+/*
+4.开始时间器
+StartTimer(timer);
+*/
+
+8.5.StopTimer
+/*
+*@param timer,时间器
+*@return 无
+*/
+/*
+5.停止时间器
+StopTimer(timer);
+*/
+
+8.6.PauseTimer
+/*
+*@param timer,时间器
+*@return 无
+*/
+/*
+6.暂停时间器
+PauseTimer(timer);
+*/
+
+8.7.ResumeTimer
+/*
+*@param timer,时间器
+*@return 无
+*/
+/*
+7.恢复 暂停的 时间器
+ResumeTimer(timer);
+*/
+
+8.8.IsPauseTimer
+/*
+*@param timer,时间器
+*@return 1为暂停,0为未被暂停
+*/
+/*
+8.是否已经暂停时间器
+IsPauseTimer(timer);
+*/
+
+//时间器函数-结束
+
+9.GIF图像函数
+9.1.LoadGif
+//GIF图像函数-开始
+/**
+*@param name,gif文件名
+*@param type,类型，通常填IMG_8888或者0
+*@ret gif,返回gif供显示等用
+*/
+/*
+1.加载GIF图片
+gif = LoadGif(name,type);
+*/
+
+9.2.FreeGif
+/**
+*@ret 无
+*/
+/*
+2.释放GIF图片
+FreeGif(gif);
+*/
+
+9.3.DrawGif
+/**
+@param gif图像源 由LoadGif得到
+@param x x坐标
+@param y y坐标
+*@ret 无
+*/
+/*
+3.画GIF图片
+DrawGif(gif,x,y);
+*/
+
+9.4.DrawGifEx
+/**
+@param gif图像源 由LoadGif得到
+*@param sx，在img图上的x坐标
+*@param sy，在img图上的y坐标
+*@param sw，子图宽
+*@param sh，子图高
+*@param dx，屏幕x坐标
+*@param dy，屏幕y坐标
+*@param xscale，x放大倍率
+*@param yscale，y放大倍率
+*@param angel，绕中心的旋转角度
+*@param mask，可以设置的alpha值
+*@ret 无
+*/
+/*
+4.画GIF图片
+DrawGifEx(gif,sx,sy,sw,sh,dx,dy,xscale,yscale,angel,mask);
+*/
+
+9.5.GifInfo
+/**
+*@param gif,gif
+*@return gifinfo,w,h,texw,texh,type,mask
+*/
+/*
+5.获取Gif图像信息
+GifInfo(gif);
+示例：
+gifinfo = GifInfo(gif);
+print(gifinfo.w);
+*/
+//GIF图像函数-结束
+
+10.效果器函数
+10.1.effect_create_fadein
+//效果器函数-开始
+/**
+ *@param src_alpha,开始的alpha值0-255
+ *@param des_alpha,结束的alpha值0-255
+ *@param timeticks,完成时间以毫秒记,1000是1秒
+ *@return effecter,返回效果器的源
+ */
+/*
+1.创建一个渐入的效果器,渐入是alpha从一个小值变化到一个大值
+effecter = effect_create_fadein(src_alpha,des_alpha,timeticks);
+*/
+
+10.2.effect_create_fadeout
+/**
+ *@param src_alpha,开始的alpha值0-255
+ *@param des_alpha,结束的alpha值0-255
+ *@param timeticks,完成时间以毫秒记,1000是1秒
+ *@return effecter,返回效果器的源
+ */
+/*
+2.创建一个渐出的效果器,渐入是alpha从一个小值变化到一个大值
+effecter = effect_create_fadeout(src_alpha,des_alpha,timeticks);
+*/
+
+10.3.effect_create_shake
+/**
+ *@param shake_x,x方向上的抖动范围
+ *@param shake_y,y方向上的抖动范围
+ *@param timeticks,完成时间以毫秒记,1000是1秒
+ *@return effecter,返回效果器的源
+ */
+/*
+3.创建一个抖动的效果器
+effecter = effect_create_shake(shake_x,shake_y,timeticks);
+*/
+
+10.4.effect_create_blur
+/**
+ *@param src_blur,开始时的模糊度 0 为不模糊
+ *@param shake_y,结束时的模糊度 0 为不模糊
+ *@param timeticks,完成时间以毫秒记,1000是1秒
+ *@param optimization,速度优化选项，0为不优化，效果好速度慢，1为一般优化，速度效果一般，2为最大优化，速度最快，但效果最差，一般情况下使用 1
+ *@return effecter,返回效果器的源
+ */
+/*
+4.创建一个模糊的效果器
+effecter = effect_create_blur(src_blur,des_blur,timeticks,optimization);
+*/
+
+10.5.effect_create_transitions
+/**
+ *@param effect_img, 效果图，效果器使用此图片的像素亮度产生中间效果
+ *@param src_img, 原图
+ *@param dst_img, 目标图
+ *@param reversed, 反转效果
+ *@param timeticks, 完成时间以毫秒记,1000是1秒
+ *@return effecter,返回效果器的源
+ */
+/*
+5.创建一个转场效果器
+effect_img=LoadImage("test1.jpg",RFZLUA.IMG_8888);
+src_img=LoadImage("test2.jpg",RFZLUA.IMG_8888);
+effecter = effect_create_transitions(effect_img,src_img,reversed,timeticks);
+*/
+
+10.6.DrawEffect
+/**
+ *@param effecter,效果器的源
+ *@param img,图像源
+ *@param x,x坐标
+ *@param y,y坐标
+ *@return 无
+ */
+/*
+6.画效果器
+img = LoadImage("test1.jpg",RFZLUA.IMG_8888);
+effecter = effect_create_fadein(0,255,1000);
+DrawEffect(effecter,img,x,y);
+*/
+
+10.7.FreeEffect
+/**
+ *@param effecter,效果器的源
+ *@return 无
+ */
+/*
+7.释放效果器
+FreeEffect(effecter);
+*/
+
+10.8.GetEffectStatus
+/**
+ *@param effecter,效果器的源
+ *@return 状态
+ RFZLUA.EFFECT_INIT = 0,//<<初始化
+ RFZLUA.EFFECT_PLAY,    //<<进行中
+ RFZLUA.EFFECT_STOP     //<<效果器完成
+ */
+/*
+8.获取效果器状态
+status = GetEffectStatus(effecter);
+*/
+//效果器函数-结束
+
+11.系统函数
+//系统函数-开始
+11.1.SysSleep
+//系统函数-开始
+
+/**
+*sleep函数，sleep毫秒，1000毫秒是1秒
+*@param ms,休息的毫秒值
+*/
+/*
+1.sleep函数
+SysSleep(ms);
+*/
+
+11.2.SysLocalTime
+/**
+*取得系统的当前时间,返回lua的一个table，table结构如下：year,month,day,hour,minutes,seconds,microseconds。
+*例如：tab=SysLocalTime();print(tab.year);将显示2010
+*@return table.包含时间的table
+*/
+/*
+2.取得系统的当前时间
+SysLocalTime();
+*/
+
+//系统函数-结束
+
+12.视频播放函数
+//视频播放函数-开始
+12.1.LoadPMP
+/**
+*@param  pmp_file,pmp文件
+*@return 无
+*/
+/*
+1.PMP文件加载函数
+LoadPMP("test.pmp");
+*/
+
+12.2.PlayPMP
+/**
+*@param
+*@return 无
+*/
+/*
+2.PMP播放函数
+PlayPMP();
+*/
+
+12.3.FreePMP
+/**
+*@param
+*@return 无
+*/
+/*
+3.PMP释放函数
+FreePMP();
+*/
+
+12.4.IsPMPEos
+/**
+*@param 
+*@return 是否已经播放完视频
+*/
+/*
+4.判断PMP是否已经播放完
+if IsPMPEos()==1 then
+end
+*/
+//视频播放函数-结束
+
+//图像处理扩展函数-开始
+
+/**
+ * 建立 src 图像的灰度版本
+ * 
+ * @param src 源图像
+ * @param gray 灰度 0 到 100, 0 为源图像, 100 为纯灰色图像
+ *return scr灰度源图像
+ */
+/*
+1.创建灰度图像
+scr = LoadImage(name,type);
+gray_scr=create_gray_image(scr,gray);
+*/
+
+/**
+ * 建立 src 图像的亮度，饱和度版本
+ *
+ * @param src 源图像
+ * @param saturation 饱合度 -100(灰度图像) 至 100(高彩色比图像)
+ * @param brightness 亮度 -100(全黑) 至 100(全白)
+ */
+/*
+2.创建带亮度和饱和度的图像
+scr = LoadImage(name,type);
+new_scr=create_saturation_brightness_image(scr,saturation,brightness);
+*/
+//图像处理扩展函数-结束
+
+
+1.RFZ-图片处理函数
+//图片处理函数-开始
+1.1.RFZLoadImage
+/*
+*@param name,文件名
+*@param type,类型，通常填IMG_8888或者0
+*@param pack,rfz包名
+*@ret img,返回img供显示等用
+*/
+/*
+1.以遍历模式从RFZ文件包里加载指定文件
+img=RFZLoadImage(name,type,pack);
+*/
+
+1.2.RFZLoadImageIndex
+/*
+*@param index,文件索引
+*@param type,类型，通常填IMG_8888或者0
+*@param pack,rfz包名
+*@ret img,返回img供显示等用
+*/
+/*
+2.以索引模式从RFZ文件包里加载指定文件
+img=RFZLoadImageIndex(index,type,pack);
+*/
+//图片处理函数-结束
+
+2.RFZ-音乐处理函数
+//音乐处理函数-开始
+
+2.1.RFZLoadSound
+/**
+*@param  filename,文件名
+*@param pack,rfz包名
+*@return  如成功返回snd音频,失败返回0
+*/
+/*
+1.以遍历模式加载一个声音文件,支持mp3 ogg wav
+snd=RFZLoadSound(fliename,pack);
+*/
+
+2.2.RFZLoadSoundIndex
+/**
+*@param  index,文件索引
+*@param pack,rfz包名
+*@return  如成功返回snd音频,失败返回0
+*/
+/*
+2.以索引模式加载一个声音文件,支持mp3 ogg wav
+snd=RFZLoadSoundIndex(index,pack);
+*/
+
+//音乐处理函数-结束
+
+3.RFZ-变量操作函数
+//RFZ变量函数-开始
+
+3.1.RFZGetValue
+/**
+*@param  index,变量索引[取值:1-1024]
+注:
+1-512:整形变量
+513-1024:字符串变量
+
+*@return  返回变量的值
+*/
+/*
+1.获取RFZ里指定变量的值
+snd=RFZGetValue(index);
+*/
+
+3.2.RFZWriteValue
+/**
+*@param  index,变量索引[取值:1-1024]
+注:
+1-512:整形变量
+513-1024:字符串变量
+*@param val,值
+*@return  无
+*/
+/*
+2.写RFZ里指定变量的值
+snd=RFZWriteValue(index,val);
+*/
+//RFZ变量函数-结束
+
+
+4.RFZ-时间器函数
+//时间器函数-开始
+4.1.RFZGetTimerTick
+/*
+*@return timeticks
+*/
+/*
+1.获取time ticks
+timeticks=RFZGetTimerTick();
+*/
+//时间器函数-结束
+
+
+5.RFZ-lua操作函数
+//lua操作函数-开始
+5.1.RFZLua
+/*
+*@param  luafile,lua文件
+*@return 无
+*/
+/*
+1.运行一个lua文件
+RFZLua("test.lua");
+*/
+//lua操作函数-结束
+
+6.RFZ-标签操作函数
+//rfz标签操作函数-开始
+6.1.RFZGoto
+/*
+*@param  rfz_chapter_flage,标签名
+*@return 无
+*/
+/*
+1.从当前脚本位置 , 跳转到脚本script.rfz里的指定标签位置
+RFZGoto(rfz_chapter_flage);
+*/
+
+6.2.RFZJump
+/*
+*@param  rfz_chapter_flage,标签名
+*@return 无
+*/
+/*
+2.从脚本起始位置 , 跳转到脚本script.rfz里的指定标签位置
+RFZJump(rfz_chapter_flage);
+*/
+
+6.3.RFZSeek
+/*
+*@param  rfz_seek,指定地址值
+*@return 无
+*/
+/*
+3.跳转到脚本script.rfz里的指定地址位置
+RFZSeek(1111);
+*/
+/*
+*@return 当前脚本地址
+*/
+6.4.RFZGetSeek
+/*
+4.获取当前脚本地址
+seek=RFZGetSeek();
+*/
+//rfz标签操作函数-结束
+
+7.rfz-内部资源操作
+//rfz-内部资源操作-开始
+
+7.1.RFZBg
+/*
+*@param  bg_filename,背景文件名
+*@return 无
+*@ RFZBg和RFZ脚本中的#bg功能相同
+*@ RFZBg是直接加载 背景包 里的资源
+*@ 及 #initpack初始化中背景包.
+*/
+/*
+1.遍历模式加载当前游戏背景
+RFZBg(bg_filename);
+*/
+
+7.2.RFZBgIndex
+/*
+*@param  bg_index,背景索引
+*@return 无
+*@ RFZBgIndex和RFZ脚本中的#index_bg功能相同
+*@ RFZBgIndex是直接加载 背景包 里的资源
+*@ 及 #initpack初始化中背景包.
+*/
+/*
+2.索引模式加载当前游戏背景
+RFZBgIndex(bg_index);
+*/
+
+7.3.RFZGetBg
+/*
+*@return img,返回img供显示等用
+*/
+/*
+3.获取当前游戏 背景img
+local img = RFZGetBg();
+DrawImage(img,0,0);
+*/
+
+7.4.RFZBgFree
+/*
+*@return 无
+*/
+/*
+4.释放当前游戏背景内存
+RFZBgFree等同于调用#bgfree
+*/
+
+7.5.RFZHideBg
+/*
+*@return 无
+*/
+/*
+5.隐藏背景
+RFZHideBg等同于调用#hidebg
+*/
+
+7.6.RFZFBg
+/*
+*@param  fbg_filename,前景文件名
+*@param  dx,x坐标
+*@param  dy,y坐标
+*@param  alpha,透明度
+*@return 无
+*@ RFZFBg和RFZ脚本中的#fbg功能相同
+*@ RFZFBg是直接加载 背景包 里的资源
+*@ 及 #initpack初始化中背景包.
+*/
+/*
+6.遍历模式加载当前游戏前景
+RFZFBg(fbg_filename);
+*/
+
+7.7.RFZFBgIndex
+/*
+*@param  fbg_index,前景索引
+*@param  dx,x坐标
+*@param  dy,y坐标
+*@param  alpha,透明度
+*@return 无
+*@ RFZFBgIndex和RFZ脚本中的#index_fbg功能相同
+*@ RFZFBgIndex是直接加载 背景包 里的资源
+*@ 及 #initpack初始化中背景包.
+*/
+/*
+7.索引模式加载当前游戏前景
+RFZFBgIndex(fbg_index);
+*/
+
+7.8.RFZGetFBg
+/*
+*@return img,返回img供显示等用
+*/
+/*
+8.获取当前游戏 背景img
+local img = RFZGetFBg();
+DrawImage(img,0,0);
+*/
+
+7.9.RFZFBgFree
+/*
+*@return 无
+*/
+/*
+9.释放当前游戏前景内存
+RFZFBgFree等同于调用#fbgfree
+*/
+
+8.0.RFZHideFBg
+/*
+*@return 无
+*/
+/*
+10.隐藏前景
+RFZHideFBg等同于调用#hidefbg
+*/
+
+8.1.RFZSE
+/*
+*@param  se_index,立绘索引[取值:0-2]
+*@param  se_filename,立绘名
+*@param  dx,x坐标
+*@param  dy,y坐标
+*@return 无
+*@ RFZSE和RFZ脚本中的#se0,se1,se2功能相同
+*@ RFZFSE是直接加载 立绘包 里的资源
+*@ 及 #initpack初始化中立绘包.
+*/
+/*
+11.遍历模式加载当前游戏立绘
+RFZSE(0,se_filename,x,y);--功能等同于使用:#se0(se_filename,x,y);
+*/
+
+8.2.RFZSEIndex
+/*
+*@param  se_index,立绘索引[取值:0-2]
+*@param  se_img_index,立绘资源索引
+*@param  dx,x坐标
+*@param  dy,y坐标
+*@return 无
+*@ RFZSEIndex和RFZ脚本中的#index_se0,index_se1,index_se2功能相同
+*@ RFZFSEIndex是直接加载 立绘包 里的资源
+*@ 及 #initpack初始化中立绘包.
+*/
+/*
+12.索引模式加载当前游戏立绘
+RFZSEIndex(0,se_img_index,x,y);--功能等同于使用:#index_se0(se_img_index,x,y);
+*/
+
+8.3.RFZSEBMP
+/*
+*@param  se_index,立绘索引[取值:0-2]
+*@param  se_filename,立绘名
+*@param  dx,x坐标
+*@param  dy,y坐标
+*@return 无
+*@ RFZSEBMP和RFZ脚本中的#se0_bmp,se1_bmp,se2_bmp功能相同
+*@ RFZFSEBMP是直接加载 立绘包 里的资源
+*@ 及 #initpack初始化中立绘包.
+*/
+/*
+13.遍历模式加载当前游戏立绘
+RFZSEBMP(0,se_filename,x,y);--功能等同于使用:#se0_bmp(se_filename,x,y);
+*/
+
+8.4.RFZSEBMPIndex
+/*
+*@param  se_index,立绘索引[取值:0-2]
+*@param  se_img_index,立绘资源索引
+*@param  dx,x坐标
+*@param  dy,y坐标
+*@return 无
+*@ RFZSEBMPIndex和RFZ脚本中的#index_se0_bmp,index_se1_bmp,index_se2_bmp功能相同
+*@ RFZFSEBMPIndex是直接加载 立绘包 里的资源
+*@ 及 #initpack初始化中立绘包.
+*/
+/*
+14.索引模式加载当前游戏立绘
+RFZSEBMPIndex(0,se_img_index,x,y);--功能等同于使用:#index_se0_bmp(se_img_index,x,y);
+*/
+
+8.5.RFZGetSE
+/*
+*@param  se_index,立绘索引[取值:0-2]
+*@return img,返回img供显示等用
+*/
+/*
+15.获取当前游戏 立绘img
+local img = RFZGetSE(se_index);
+DrawImage(img,0,0);
+*/
+
+8.6.RFZSEFree
+/*
+*@param  se_index,立绘索引[取值:0-2]
+*@return 无
+*/
+/*
+16.释放当前游戏立绘内存
+RFZSEFree等同于调用#sefree
+*/
+
+8.7.RFZHideSE
+/*
+*@param  se_index,立绘索引[取值:0-2]
+*@return 无
+*/
+/*
+17.隐藏指定立绘
+RFZHideSE等同于调用#hidese
+*/
+
+//rfz-内部资源操作-结束
+
+
+//截图函数-开始
+
+1.RFZScreenShot
+/*
+*@param  filename:保存的文件名...文件为PNG文件
+*@param  width:保存图片的指定宽度
+*@param  height:保存图片的指定高度
+*@return 无
+*/
+/*
+1.截屏当前游戏
+RFZScreenShot("test.png",240,136);
+*/
+
+2.RFZScreenToImage
+/*
+*@param  width:图片的指定宽度
+*@param  height:图片的指定高度
+*@return img图片引用
+*/
+/*
+2.截屏当前游戏
+img=RFZScreenToImage(240,136);
+*/
+
+3.RFZSetImageSize
+/*
+*@param  oldimg:指定图片引用
+*@param  width:图片的指定宽度
+*@param  height:图片的指定高度
+*@return img图片引用
+*/
+/*
+3.改变指定IMG大小
+img=RFZSetImageSize(oldimg,240,136);
+*/
+
+4.RFZSaveImage
+/*
+*@param  oldimg:指定图片引用
+*@param  path:保存路径
+*@return 无
+*/
+/*
+4.保存图片
+RFZSaveImage(oldimg,"test.png");
+*/
+
+//截图函数-结束
+
+//其它
+1.RFZSysPSPCreateDir
+/*
+*@param  dir:指定目录名
+*@return 无
+*/
+/*
+1.PSP创建目录
+RFZSysPSPCreateDir("thumb");--目录路径:ms0:/ReinforceZwei/SAVEDATA/thumb
+*/
+
+2.RFZSysISPSPOS
+/*
+*@return result;
+0:表示当前不在PSP端
+1:在PSP端
+*/
+/*
+2.返回当前是否是PSP系统
+if RFZSysISPSPOS()==1 then
+  print("当前是PSP系统\n");
+end
+*/
+
+//
+3.RFZSysCheckFile/**@param  fliename:指定文件名*@return result;0:不存在1:存在*//*3.检查指定路径下文件是否存在if RFZSysCheckFile("test.png")==1 then  print("文件存在");else  print("文件不存在");end*/
+

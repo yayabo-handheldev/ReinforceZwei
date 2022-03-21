@@ -1,0 +1,12 @@
+
+##initchildcgmemorypack(child_hcg)
+初始化cg回想子图包
+子图包图片建议大小:96X54
+
+其它参数初始化具体看:
+script.rfz里的CG回想模式
+
+CG回想中 
+PSP按三角键 返回CG回想菜单
+PC按I键     返回CG回想菜单
+

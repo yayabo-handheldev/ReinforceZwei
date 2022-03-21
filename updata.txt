@@ -1,0 +1,103 @@
+RFZ V2.0
+
+1.RFZSysPSPCreateDir
+/*
+*@param  dir:指定目录名
+*@return 无
+*/
+/*
+1.PSP创建目录
+RFZSysPSPCreateDir("thumb");--目录路径:ms0:/ReinforceZwei/SAVEDATA/thumb
+*/
+
+2.RFZSysISPSPOS
+/*
+*@return result;
+0:表示当前不在PSP端
+1:在PSP端
+*/
+/*
+2.返回当前是否是PSP系统
+if RFZSysISPSPOS()==1 then
+  print("当前是PSP系统\n");
+end
+*/
+3.RFZSetImageSize
+/*
+*@param  oldimg:指定图片引用
+*@param  width:图片的指定宽度
+*@param  height:图片的指定高度
+*@return img图片引用
+*/
+/*
+3.改变指定IMG大小
+img=RFZSetImageSize(oldimg,240,136);
+*/
+
+4.RFZSaveImage
+/*
+*@param  oldimg:指定图片引用
+*@param  path:保存路径
+*@return 无
+*/
+/*
+4.保存图片
+RFZSaveImage(oldimg,"test.png");
+*/
+
+
+/*
+*@param  text_index:文本的索引值[取值:>0]
+*@return 历史对话人物名
+*@当发生错误时返回 "" 
+*/
+/*
+5.获取历史对话人物名
+sename=RFZSysLogGetLogName(1);--获取第一个文本的对话人物名
+*/
+
+
+6.RFZSysCheckFile
+/*
+*@param  fliename:指定文件名
+*@return result;
+0:不存在
+1:存在
+*/
+/*
+6.检查指定路径下文件是否存在
+if RFZSysCheckFile("test.png")==1 then
+  print("文件存在");
+else
+  print("文件不存在");
+end
+*/
+
+--接口
+1.对话框再绘接口
+RFZMsgReDraw_Init()--初始化资源函数
+RFZMsgReDraw_Draw()--再绘函数
+RFZMsgReDraw_Free()--释放资源函数
+--更换背景后对话框的特效接口
+RFZMsgEffect()
+--更换背景后对话框的特效接口
+
+2.人名对话框再绘接口
+RFZSEMsgReDraw_Init()--初始化资源函数
+RFZSEMsgReDraw_Draw()--再绘函数
+RFZSEMsgReDraw_Free()--释放资源函数
+
+3.自动游戏时绘图函数
+RFZAutoGame_Init()--初始化资源函数
+RFZAutoGame_Draw()--再绘函数
+RFZAutoGame_Free()--释放资源函数
+
+4.等待按下时绘图函数
+RFZWaitCursor_Init()--初始化资源函数
+RFZWaitCursor_Draw()--再绘函数
+RFZWaitCursor_Free()--释放资源函数
+
+
+
+--接口
+

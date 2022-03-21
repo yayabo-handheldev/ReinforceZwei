@@ -1,0 +1,30 @@
+*start
+;初始化lua语言库
+#initlua()
+;包含lua文件库
+;#initluainclude(test.lua)
+#initgametitle(欢迎使用RFZ LUA!)
+#initpack(NULL,NULL,NULL,NULL,NULL,NULL)
+
+*newgame
+
+;lua语言作用域开始
+*luabegin
+--RFZLua("test.lua");
+--test();
+print("欢迎使用RFZ LUA!");
+*luaend
+;lua语言作用域结束
+;占停
+*pause
+
+${
+;lua语言作用域开始
+#luabegin()
+print("欢迎使用RFZ LUA!");
+#luaend()
+;lua语言作用域结束
+
+$}
+
+*end
